@@ -6,4 +6,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <!-- 카카오톡 로그인 api key -->
+    <string name="kakao_app_key">a009e31522301ef29eaced095197ea5d</string>
 </resources>

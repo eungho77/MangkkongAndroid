@@ -8,26 +8,5 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <ImageButton
-        android:id="@+id/imgbtn"
-        android:layout_width="fill_parent"
-        android:layout_height="164dp" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/imgbtn"
-        >
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            />
-
-    </RelativeLayout>
-
 
 </RelativeLayout>

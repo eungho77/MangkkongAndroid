@@ -1,32 +1,50 @@
 package com.example.keh_a.mangkkong;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.util.Base64;
+import android.util.Log;
 
-import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
-import com.kakao.usermgmt.LoginButton;
 
-public class KaKaLoing extends AppCompatActivity {
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
-    LoginButton btn_kakao_login;
+import static com.kakao.util.helper.Utility.getPackageInfo;
+
+public class KaKaLogin extends AppCompatActivity {
+
+    SessionCallback callback;
+    Context context;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kakaoloing);
+        setContentView(R.layout.kakaologin);
+        context = getApplicationContext();
 
-        btn_kakao_login = (LoginButton) findViewById(R.id.btnKakaoLogin);
+        PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
+        try {
+            for (Signature signature : packageInfo.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("aaaaa", Base64.encodeToString(md.digest(), Base64.NO_WRAP));
+            }
+        } catch (NoSuchAlgorithmException e) {
+            Log.w("KAKAOTALK", "Unable to get MessageDigest. signature=" + e);
+        }
+
+        callback = new SessionCallback();
+        Session.getCurrentSession().addCallback(callback);
+
     }
 
-    public void OnClick(View v){
-        int id = v.getId();
+    public void getKeyHash(final Context context) {
 
-        if(id == R.id.btnKakaoLogin){
-            btn_kakao_login.performClick();
-            Session session = Session.getCurrentSession();
-            session.addCallback(new SessionCallback());
-            session.open(AuthType.KAKAO_LOGIN_ALL, LoginButton.this);
-        }
+
+
     }
 }
