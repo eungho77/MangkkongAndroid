@@ -151,9 +151,8 @@ public class KaKaLogin extends AppCompatActivity {
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
 
             for(int i=0;i<jsonArray.length();i++){
-
+                
                 JSONObject item = jsonArray.getJSONObject(i);
-
 //                String name = item.getString(TAG_NAME);
 //                String nickname = item.getString(TAG_NICKNAME);
 
