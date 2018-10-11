@@ -33,11 +33,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        해시키 구하기
-        mContext = getApplicationContext();
-        getHashKey(mContext);
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -103,31 +98,5 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public static String getHashKey(Context context) {
-
-        final String TAG = "KeyHash";
-        String keyHash = null;
-
-        try {
-            PackageInfo info =
-                    context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md;
-                md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                keyHash = new String(Base64.encode(md.digest(), 0));
-                Log.d(TAG, keyHash);
-            }
-
-        } catch (Exception e) {
-            Log.e("name not found", e.toString());
-        }
-        if (keyHash != null) {
-            return keyHash;
-        } else {
-            return null;
-        }
     }
 }
