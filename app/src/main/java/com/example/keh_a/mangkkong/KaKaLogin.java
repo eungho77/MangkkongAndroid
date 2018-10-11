@@ -142,8 +142,8 @@ public class KaKaLogin extends AppCompatActivity {
     private void showResult(){
 
         String TAG_JSON="RESULT";
-        String TAG_NAME = "NAME";
-        String TAG_NICKNAME = "NICKNAME";
+//        String TAG_NAME = "NAME";
+//        String TAG_NICKNAME = "NICKNAME";
 
 
         try {
