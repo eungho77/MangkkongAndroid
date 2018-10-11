@@ -142,8 +142,8 @@ public class KaKaLogin extends AppCompatActivity {
     private void showResult(){
 
         String TAG_JSON="RESULT";
-//        String TAG_NAME = "NAME";
-//        String TAG_NICKNAME = "NICKNAME";
+        String TAG_NAME = "NAME";
+        String TAG_NICKNAME = "NICKNAME";
 
 
         try {
@@ -153,8 +153,8 @@ public class KaKaLogin extends AppCompatActivity {
             for(int i=0;i<jsonArray.length();i++){
                 
                 JSONObject item = jsonArray.getJSONObject(i);
-//                String name = item.getString(TAG_NAME);
-//                String nickname = item.getString(TAG_NICKNAME);
+                String name = item.getString(TAG_NAME);
+                String nickname = item.getString(TAG_NICKNAME);
 
 //                CustomerItem personalData = new CustomerItem();
 //                personalData.setID(name);
