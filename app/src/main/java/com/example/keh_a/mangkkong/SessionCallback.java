@@ -52,12 +52,12 @@ public class SessionCallback implements ISessionCallback {
                 String UUID = userProfile.getUUID();
                 long id = userProfile.getId();
 
-                Log.e("Profile : ", nickname + "");
-                Log.e("Profile : ", email + "");
-                Log.e("Profile : ", profileImagePath  + "");
-                Log.e("Profile : ", thumnailPath + "");
-                Log.e("Profile : ", UUID + "");
-                Log.e("Profile : ", id + "");
+//                Log.e("Profile : ", nickname + "");
+//                Log.e("Profile : ", email + "");
+//                Log.e("Profile : ", profileImagePath  + "");
+//                Log.e("Profile : ", thumnailPath + "");
+//                Log.e("Profile : ", UUID + "");
+//                Log.e("Profile : ", id + "");
             }
 
             // 사용자 정보 요청 실패
