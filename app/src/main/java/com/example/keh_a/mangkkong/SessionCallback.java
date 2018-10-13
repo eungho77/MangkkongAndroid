@@ -1,10 +1,6 @@
 package com.example.keh_a.mangkkong;
 
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
-
 
 import com.kakao.auth.ISessionCallback;
 import com.kakao.network.ErrorResult;
@@ -13,18 +9,8 @@ import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 import static android.content.ContentValues.TAG;
@@ -65,6 +51,9 @@ public class SessionCallback implements ISessionCallback {
                 Log.e("SessionCallback :: ", "onSuccess");
                 String nickname = userProfile.getNickname();
                 String email = userProfile.getEmail();
+
+                Log.d("nickname", nickname);
+                Log.d("email", email);
 
                 KaKaLoginDB("http://eungho77.ipdisk.co.kr:8000/Mangkkong/USERS/Insert_USERS_Membership.php", email, null, nickname);
             }
