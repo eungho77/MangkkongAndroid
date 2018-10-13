@@ -1,7 +1,9 @@
 package com.example.keh_a.mangkkong;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.util.Log;
-
+import android.widget.Toast;
 
 
 import com.kakao.auth.ISessionCallback;
@@ -10,6 +12,22 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+
+import static android.content.ContentValues.TAG;
 
 public class SessionCallback implements ISessionCallback {
 
@@ -47,17 +65,8 @@ public class SessionCallback implements ISessionCallback {
                 Log.e("SessionCallback :: ", "onSuccess");
                 String nickname = userProfile.getNickname();
                 String email = userProfile.getEmail();
-                String profileImagePath = userProfile.getProfileImagePath();
-                String thumnailPath = userProfile.getThumbnailImagePath();
-                String UUID = userProfile.getUUID();
-                long id = userProfile.getId();
 
-//                Log.e("Profile : ", nickname + "");
-//                Log.e("Profile : ", email + "");
-//                Log.e("Profile : ", profileImagePath  + "");
-//                Log.e("Profile : ", thumnailPath + "");
-//                Log.e("Profile : ", UUID + "");
-//                Log.e("Profile : ", id + "");
+                KaKaLoginDB("http://eungho77.ipdisk.co.kr:8000/Mangkkong/USERS/Insert_USERS_Membership.php", email, null, nickname);
             }
 
             // 사용자 정보 요청 실패
@@ -66,5 +75,31 @@ public class SessionCallback implements ISessionCallback {
                 Log.e("SessionCallback :: ", "onFailure : " + errorResult.getErrorMessage());
             }
         });
+    }
+
+    public void KaKaLoginDB(String serverURL, String ID, String PW, String NICKNAME) {
+        String data = "ID=" + ID + "&PW=" + PW +"&NICKNAME=" + NICKNAME;
+
+        try {
+            URL url = new URL(serverURL);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+            httpURLConnection.setReadTimeout(5000);
+            httpURLConnection.setConnectTimeout(5000);
+            httpURLConnection.setRequestMethod("POST");
+            httpURLConnection.setDoInput(true);
+            httpURLConnection.connect();
+
+            OutputStream outputStream = httpURLConnection.getOutputStream();
+            outputStream.write(data.getBytes("UTF-8"));
+            outputStream.flush();
+            outputStream.close();
+
+            int responseStatusCode = httpURLConnection.getResponseCode();
+            Log.d(TAG, "response code - " + responseStatusCode);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
