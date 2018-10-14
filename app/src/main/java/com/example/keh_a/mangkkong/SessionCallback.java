@@ -1,5 +1,6 @@
 package com.example.keh_a.mangkkong;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.kakao.auth.ISessionCallback;
@@ -55,7 +56,8 @@ public class SessionCallback implements ISessionCallback {
                 Log.d("nickname", nickname);
                 Log.d("email", email);
 
-                KaKaLoginDB("http://eungho77.ipdisk.co.kr:8000/Mangkkong/USERS/Insert_USERS_Membership.php", email, null, nickname);
+                GetData data = new GetData();
+                data.execute("eungho77.ipdisk.co.kr:8000", email, null, nickname);
             }
 
             // 사용자 정보 요청 실패
@@ -66,29 +68,47 @@ public class SessionCallback implements ISessionCallback {
         });
     }
 
-    public void KaKaLoginDB(String serverURL, String ID, String PW, String NICKNAME) {
-        String data = "ID=" + ID + "&PW=" + PW +"&NICKNAME=" + NICKNAME;
+    private class GetData extends AsyncTask<String, Void, String> {
+        String errorString = null;
 
-        try {
-            URL url = new URL(serverURL);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
-            httpURLConnection.setReadTimeout(5000);
-            httpURLConnection.setConnectTimeout(5000);
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoInput(true);
-            httpURLConnection.connect();
+        @Override
+        protected String doInBackground(String... params) {
+            String serverURL = "http://" + params[0] + "/Mangkkong/USERS/Select_USERS_AIIList.php";
+            String data = "ID=" + params[1] + "PW=" + params[2] + "NICKNAME=" + params[3];
 
-            OutputStream outputStream = httpURLConnection.getOutputStream();
-            outputStream.write(data.getBytes("UTF-8"));
-            outputStream.flush();
-            outputStream.close();
+            try {
+                URL url = new URL(serverURL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
-            int responseStatusCode = httpURLConnection.getResponseCode();
-            Log.d(TAG, "response code - " + responseStatusCode);
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(data.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "response code - " + responseStatusCode);
+            } catch (Exception e) {
+                Log.d(TAG, "GetData : Error ", e);
+                errorString = e.toString();
+            }
+
+            return "succ";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            Log.d("succ", "insert db succ");
         }
     }
 }
