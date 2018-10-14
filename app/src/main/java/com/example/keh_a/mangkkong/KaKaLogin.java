@@ -12,6 +12,9 @@ import android.util.Log;
 import com.kakao.auth.Session;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import function.SessionCallback;
+
 import static com.kakao.util.helper.Utility.getPackageInfo;
 
 public class KaKaLogin extends AppCompatActivity {
