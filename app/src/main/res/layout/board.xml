@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#EB6364"
+                android:background="#F4D8DF"
                 android:text="Borad" />
 
             <Button
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#AC3633"
+                android:background="#E0BDC6"
                 android:text="VOTE" />
 
             <Button
@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="#785567"
+                android:background="#BC939D"
                 android:text="PROMISE" />
         </LinearLayout>
 
@@ -59,7 +59,7 @@
         android:id="@+id/frame_list_card_item"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="#f00987">
+        android:background="#EB6364">
 
         <TextView
             android:id="@+id/text_list_card_title"
