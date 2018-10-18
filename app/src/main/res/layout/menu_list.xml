@@ -14,20 +14,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Room List" />
+            android:text="Room List"
+            android:background="#F4D8DF"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="TO DO LIST" />
+            android:text="TO DO LIST"
+            android:background="#E0BDC6"/>
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#BC939D"
             android:text="CALENDAR" />
 
         <Button
@@ -35,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#785567"
             android:text="TIMELINE" />
 
     </LinearLayout>
