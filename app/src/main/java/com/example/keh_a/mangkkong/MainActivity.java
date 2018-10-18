@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -69,22 +71,40 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_room) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_todo) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_calender) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_timeline) {
+            Toast.makeText(this, "TimeLine Ui 구성 계획 전 입니다.", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_setting) {
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void OnClick(View v){
+        int id = v.getId();
+
+        if(id==R.id.btn_room_list){
+            Toast.makeText(this, "방 목록", Toast.LENGTH_SHORT).show();
+        }
+
+        if(id==R.id.btn_todo_list){
+            Toast.makeText(this, "todo 목록", Toast.LENGTH_SHORT).show();
+        }
+
+        if(id==R.id.btn_calendar){
+            Toast.makeText(this, "캘린더", Toast.LENGTH_SHORT).show();
+        }
+
+        if(id==R.id.btn_timeline){
+            Toast.makeText(this, "타임라인", Toast.LENGTH_SHORT).show();
+        }
     }
 }

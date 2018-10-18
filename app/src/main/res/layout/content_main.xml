@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
+    android:orientation="vertical"
     tools:showIn="@layout/app_bar_main">
 
+    <Button
+        android:id="@+id/btn_room_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="Room List"
+        android:textStyle="bold"
+        android:onClick="OnClick"
+        android:background="#F4D8DF"
+        tools:ignore="OnClick" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn_todo_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="TO DO LIST"
+        android:onClick="OnClick"
+        android:textStyle="bold"
+        android:background="#E0BDC6"/>
+
+    <Button
+        android:id="@+id/btn_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#BC939D"
+        android:onClick="OnClick"
+        android:textStyle="bold"
+        android:text="CALENDAR" />
+
+    <Button
+        android:id="@+id/btn_timeline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#785567"
+        android:onClick="OnClick"
+        android:textStyle="bold"
+        android:text="TIMELINE" />
+</LinearLayout>

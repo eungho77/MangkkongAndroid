@@ -15,6 +15,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Room List"
+            android:textStyle="bold"
             android:background="#F4D8DF"/>
 
         <Button
@@ -23,6 +24,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="TO DO LIST"
+            android:textStyle="bold"
             android:background="#E0BDC6"/>
 
         <Button
@@ -31,6 +33,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#BC939D"
+            android:textStyle="bold"
             android:text="CALENDAR" />
 
         <Button
@@ -39,6 +42,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#785567"
+            android:textStyle="bold"
             android:text="TIMELINE" />
 
     </LinearLayout>

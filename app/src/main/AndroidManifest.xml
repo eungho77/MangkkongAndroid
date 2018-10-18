@@ -28,6 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" ></activity>
+        <activity android:name=".Board" ></activity>
+        <activity android:name=".Promise" ></activity>
+        <activity android:name=".Room_list" ></activity>
+        <activity android:name=".Todo" ></activity>
+        <activity android:name=".Vote" ></activity>
     </application>
 
 </manifest>
