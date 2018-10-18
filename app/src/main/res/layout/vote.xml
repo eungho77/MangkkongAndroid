@@ -44,5 +44,7 @@
                 android:layout_weight="1"
                 android:background="#BBB1D3"
                 android:text="PROMISE" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
