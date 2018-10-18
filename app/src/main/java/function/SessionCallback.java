@@ -78,7 +78,7 @@ public class SessionCallback implements ISessionCallback {
 
         @Override
         protected String doInBackground(String... params) {
-            String serverURL = "http://" + params[0] + "/Mangkkong/USERS/Select_USERS_AIIList.php";
+            String serverURL = "http://" + params[0] + "/Mangkkong/USERS/Insert_USERS_Membership.php";
             String data = "ID=" + params[1] + "PW=" + params[2] + "NICKNAME=" + params[3];
 
             try {
