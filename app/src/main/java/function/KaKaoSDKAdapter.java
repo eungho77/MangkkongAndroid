@@ -1,5 +1,6 @@
 package function;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.kakao.auth.ApprovalType;
@@ -45,6 +46,11 @@ public class KaKaoSDKAdapter extends KakaoAdapter {
     @Override
     public IApplicationConfig getApplicationConfig() {
         return new IApplicationConfig() {
+
+            public Activity getTopActivity() {
+                return GlobalApplication.getCurrentActivity();
+            }
+
             @Override
             public Context getApplicationContext() {
                 return GlobalApplication.getGlobalApplicationContext();
